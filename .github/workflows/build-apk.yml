@@ -13,7 +13,12 @@ jobs:
         with:
           flutter-version: "3.38.x"
           cache: true
-
+      - name: Create key.properties
+        run: |
+          echo "storeFile=debug.keystore" > simple_live_app/android/key.properties
+          echo "storePassword=android" >> simple_live_app/android/key.properties
+          echo "keyPassword=android" >> simple_live_app/android/key.properties
+          echo "keyAlias=androiddebugkey" >> simple_live_app/android/key.properties
       - name: Build APK
         run: |
           cd simple_live_app
